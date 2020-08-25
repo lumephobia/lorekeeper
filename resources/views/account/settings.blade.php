@@ -19,6 +19,36 @@
     </div>
 {!! Form::close() !!}
 
+<h3>Links</h3>
+   <div class="form-group row">
+        <label class="col-md-2 col-form-label">Discord</label>
+        <div class="col-md-9">
+            {!! Form::text('disc', Auth::user()->profile->disc, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 col-form-label">Instagram</label>
+        <div class="col-md-9">
+            {!! Form::text('insta', Auth::user()->profile->insta, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 col-form-label">Archieve Of Your Own (AO3)</label>
+        <div class="col-md-9">
+            {!! Form::text('arch', Auth::user()->profile->arch, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 col-form-label">Toyhou.se</label>
+        <div class="col-md-9">
+            {!! Form::text('house', Auth::user()->profile->house, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+    <div class="text-right">
+        {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
+    </div>
+
+{!! Form::close() !!}
 
 <h3>Email Address</h3>
 
