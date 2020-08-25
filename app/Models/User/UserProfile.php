@@ -9,14 +9,14 @@ class UserProfile extends Model
 
     /**
      * The attributes that are mass assignable.
-     *
+     * 
      * @var array
      */
     protected $fillable = [
         'text',  'insta', 'disc', 'house' , 'arch' , 'parsed_text'
     ];
 
-    /** 
+    /**
      * The primary key of the model.
      *
      * @var string
