@@ -30,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name', 'alias', 'rank_id', 'email', 'password', 'is_news_unread', 'is_banned', 'disc', 'insta', 'house', 'arch'
     ];
 
-    /**
+    /** 
      * The attributes that should be hidden for arrays.
      *
      * @var array

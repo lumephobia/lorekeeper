@@ -16,7 +16,7 @@ class UserProfile extends Model
         'text',  'insta', 'disc', 'house' , 'arch' , 'parsed_text'
     ];
 
-    /**
+    /** 
      * The primary key of the model.
      *
      * @var string

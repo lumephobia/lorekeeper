@@ -19,7 +19,7 @@
     </div>
 {!! Form::close() !!}
 
-<h3>Links</h3>
+<h3>Links</h3> 
    <div class="form-group row">
         <label class="col-md-2 col-form-label">Discord</label>
         <div class="col-md-9">

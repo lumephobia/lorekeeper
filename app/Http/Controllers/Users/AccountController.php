@@ -46,7 +46,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Edits the user's profile.
+     * Edits the user's profile. 
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse

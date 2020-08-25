@@ -12,7 +12,7 @@
   <!-- If you install the user icon extension: the icon goes here:
 
   <img src="/images/avatars/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:20px; background-color: #f2f0ed; border: #f2f0ed solid 5px;">
-
+ 
  -->
 
 <div class="row">
