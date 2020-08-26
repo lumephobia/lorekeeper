@@ -17,9 +17,10 @@
     <div class="text-right">
         {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
     </div>
+{!! Form::close() !!}
 
     <h3>Links</h3>
-
+{!! Form::open(['url' => 'account/socials']) !!}
         <div class="form-group row">
             <label class="col-md-2 col-form-label">Discord</label>
             <div class="col-md-9">

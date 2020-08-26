@@ -9,38 +9,42 @@
     <div class="alert alert-danger">This user has been banned.</div>
 @endif
 
-  <!-- If you install the user icon extension: the icon goes here:
 
-  <img src="/images/avatars/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:20px; background-color: #f2f0ed; border: #f2f0ed solid 5px;">
- 
- -->
+ <h1>
 
-<div class="row">
-  <div style="padding-right: 10px;"><h1>{!! $user->displayName !!}</div>
+   <!-- If you install the user icon extension: the icon goes here:
 
-  <div class="ulinks" style="padding-top:7px">
+  <img src="/images/avatars/{{ $user->avatar }}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;">
 
-  @if($user->profile->disc)
-    <span class="float-left" style="color: #a196a1; font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" &#35;{!! $user->profile->disc !!} "><i class="fab fa-discord"></i></span>
-  @endif
-  @if($user->profile->house)
-    <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->house !!}&#64;toyhou.se "><a href="https://toyhou.se/{!! $user->profile->house !!}"><i class="fas fa-home"></i></a></span>
-  @endif
-  @if($user->profile->arch)
-    <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->arch !!}&#64;ArchiveOfYourOwn (AO3) "><a href="https://archiveofourown.org/users/{!! $user->profile->arch !!}"><i class="fas fa-file-alt"></i></a></span>
-  @endif
-  @if($user->profile->insta)
-    <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->insta !!}&#64;instagram "><a href="https://archiveofourown.org/users/{!! $user->profile->insta !!}"><i class="fab fa-instagram"></i></a></span>
-  @endif
+  -->
 
-</div>
-</div
 
-<h1>
-    @if($user->settings->is_fto)
-        <span class="badge badge-success float-right" data-toggle="tooltip" title="This user has not owned any characters from this world before.">FTO</span>
-    @endif
-</h1>
+ @if($user->settings->is_fto)
+         <span class="badge badge-success float-right" data-toggle="tooltip" title="This user has not owned any characters from this world before.">FTO</span>
+ @endif
+
+ <div class="row">
+   <div style="padding-right: 10px;">{!! $user->displayName !!}</div>
+
+   <div class="ulinks" style="padding-top:7px">
+
+   @if($user->profile->disc)
+     <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" &#35;{!! $user->profile->disc !!} "><i class="fab fa-discord"></i></span>
+   @endif
+   @if($user->profile->house)
+     <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->house !!}&#64;toyhou.se "><a href="https://toyhou.se/{!! $user->profile->house !!}"><i class="fas fa-home"></i></a></span>
+   @endif
+   @if($user->profile->arch)
+     <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->arch !!}&#64;twitter"><a href="https://archiveofourown.org/users/{!! $user->profile->arch !!}"><i class="fas fa-file-alt"></i></a></span>
+   @endif
+   @if($user->profile->insta)
+     <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->insta !!}&#64;instagram "><a href="https://archiveofourown.org/users/{!! $user->profile->insta !!}"><i class="fab fa-instagram"></i></a></span>
+   @endif
+
+ </div>
+ </div>
+
+ </h1>
 <div class="mb-1">
     <div class="row">
         <div class="col-md-2 col-4"><h5>Alias</h5></div>
