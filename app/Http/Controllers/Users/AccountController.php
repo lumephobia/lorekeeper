@@ -52,20 +52,28 @@ class AccountController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postProfile(Request $request)
-    {
-        if($request->get('disc') != null || $request->get('insta') != null || 
-        $request->get('house') != null || $request->get('arch') != null) $links = TRUE;
-        else $links = FALSE;
-        if(!$links) $text = $request->get('text');
-        else $text = Auth::user()->profile->text;
-        
+    {        
         Auth::user()->profile->update([
-            'text' => $text,
-            'disc' => $links ? $request->get('disc') : Auth::user()->profile->disc,
-            'insta' => $links ? $request->get('insta') : Auth::user()->profile->insta,
-            'house' => $links ? $request->get('house') : Auth::user()->profile->house,
-            'arch' => $links ? $request->get('arch') : Auth::user()->profile->arch,
-            'parsed_text' => parse($text),
+            'text' => $request->get('text'),
+            'parsed_text' => parse($request->get('text')),
+        ]);
+        flash('Profile updated successfully.')->success();
+        return redirect()->back();
+    }
+
+    /**
+     * Edits the user's links.  
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postLinks(Request $request)
+    {
+        Auth::user()->profile->update([
+            'disc' => $request->get('disc'),
+            'insta' => $request->get('insta'),
+            'house' => $request->get('house'),
+            'arch' => $request->get('arch'),
         ]);
         flash('Profile updated successfully.')->success();
         return redirect()->back();

@@ -24,7 +24,7 @@ Route::group(['prefix' => 'account', 'namespace' => 'Users'], function() {
     Route::post('profile', 'AccountController@postProfile');
     Route::post('password', 'AccountController@postPassword');
     Route::post('email', 'AccountController@postEmail');
-    Route::post('socials', 'AccountController@postProfile');
+    Route::post('socials', 'AccountController@postLinks');
 
     Route::get('bookmarks', 'BookmarkController@getBookmarks');
     Route::get('bookmarks/create', 'BookmarkController@getCreateBookmark');
