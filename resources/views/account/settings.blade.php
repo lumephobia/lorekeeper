@@ -20,6 +20,7 @@
 {!! Form::close() !!}
 
     <h3>Links</h3>
+      <p>Add your username to the forms only, please. A link will be created automatically.</p>
 {!! Form::open(['url' => 'account/socials']) !!}
         <div class="form-group row">
             <label class="col-md-2 col-form-label">Discord</label>
