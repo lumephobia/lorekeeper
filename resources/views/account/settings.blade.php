@@ -20,28 +20,29 @@
 {!! Form::close() !!}
 
     <h3>Links</h3>
-      <p>Add your username to the forms only, please. A link will be created automatically.</p>
+  <p>Add your username to the forms only, please. A link will be created automatically.</p>
+
 {!! Form::open(['url' => 'account/socials']) !!}
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">Discord</label>
+            <label class="col-md-2 col-form-label">Discord</label> <i class="fas fa-question-circle" data-toggle="tooltip" title=" Enter your usename and number code, please! - Example: username#0001 "></i>
             <div class="col-md-9">
                 {!! Form::text('disc', Auth::user()->profile->disc, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">Instagram</label>
+            <label class="col-md-2 col-form-label">Instagram <i class="fas fa-question-circle" data-toggle="tooltip" title=" Enter your username, please!  "></i></label>
             <div class="col-md-9">
                 {!! Form::text('insta', Auth::user()->profile->insta, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">Archieve Of Your Own (AO3)</label>
+            <label class="col-md-2 col-form-label">Archieve Of Your Own (AO3) <i class="fas fa-question-circle" data-toggle="tooltip" title=" Enter your username, please!  "></i></label>
             <div class="col-md-9">
                 {!! Form::text('arch', Auth::user()->profile->arch, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 col-form-label">Toyhou.se</label>
+            <label class="col-md-2 col-form-label">Toyhou.se <i class="fas fa-question-circle" data-toggle="tooltip" title=" Enter your username, please!  "></i></label>
             <div class="col-md-9">
                 {!! Form::text('house', Auth::user()->profile->house, ['class' => 'form-control']) !!}
             </div>
