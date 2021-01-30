@@ -17,7 +17,7 @@ class UserLinkAddon extends Migration
         Schema::table('user_profiles', function (Blueprint $table) {
             $table->string('insta', 40)->nullable($value = true);
             $table->string('house', 60)->nullable($value = true);
-            $table->string('disc', 8)->nullable($value = true);
+            $table->string('disc', 40)->nullable($value = true);
             $table->string('arch', 50)->nullable($value = true);
         });
     }
