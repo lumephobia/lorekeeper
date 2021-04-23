@@ -1,6 +1,46 @@
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@lumephobia
+corowne /
+lorekeeper
+
+12
+26
+
+    32
+
+Code
+Issues 4
+Pull requests 3
+Actions
+Projects
+Wiki
+Security
+
+    Insights
+
+lorekeeper/resources/views/user/profile.blade.php
+@itinerare
+itinerare Merge branch 'masterlist-sub' of https://github.com/JuniJwi/lorekeeper …
+Latest commit 7803a89 on 11 Nov 2020
+History
+6 contributors
+@corowne
+@Ne-wt
+@itinerare
+@JuniJwi
+@Draginraptor
+@preimpression
+110 lines (100 sloc) 4.24 KB
 @extends('user.layout')
 
 @section('profile-title') {{ $user->name }}'s Profile @endsection
+
+@section('meta-img') {{ asset('/images/avatars/'.$user->avatar) }} @endsection
 
 @section('profile-content')
 {!! breadcrumbs(['Users' => 'users', $user->name => $user->url]) !!}
@@ -8,35 +48,12 @@
 @if($user->is_banned)
     <div class="alert alert-danger">This user has been banned.</div>
 @endif
-
-  <!-- If you install the user icon extension: the icon goes here:
-
-  <img src="/images/avatars/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:20px; background-color: #f2f0ed; border: #f2f0ed solid 5px;">
-
- -->
-
-<div class="row">
-  <div style="padding-right: 10px;"><h1>{!! $user->displayName !!}</div>
-
-  <div class="ulinks" style="padding-top:7px">
-
-  @if($user->profile->disc)
-    <span class="float-left" style="color: #a196a1; font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" &#35;{!! $user->profile->disc !!} "><i class="fab fa-discord"></i></span>
-  @endif
-  @if($user->profile->house)
-    <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->house !!}&#64;toyhou.se "><a href="https://toyhou.se/{!! $user->profile->house !!}"><i class="fas fa-home"></i></a></span>
-  @endif
-  @if($user->profile->arch)
-    <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->arch !!}&#64;ArchiveOfYourOwn (AO3) "><a href="https://archiveofourown.org/users/{!! $user->profile->arch !!}"><i class="fas fa-file-alt"></i></a></span>
-  @endif
-  @if($user->profile->insta)
-    <span class="float-left" style="font-size: 1.1rem; padding-left: 10px; opacity: 0.4;" data-toggle="tooltip" title=" {!! $user->profile->insta !!}&#64;instagram "><a href="https://archiveofourown.org/users/{!! $user->profile->insta !!}"><i class="fab fa-instagram"></i></a></span>
-  @endif
-
-</div>
-</div
-
 <h1>
+<img src="/images/avatars/{{ $user->avatar }}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;">
+    {!! $user->displayName !!}
+
+    <small><small><a href="{{ url('reports/new?url=') . $user->url }}"><i class="fas fa-exclamation-triangle fa-xs" data-toggle="tooltip" title="Click here to report this user." style="opacity: 50%;"></i></a></small></small>
+
     @if($user->settings->is_fto)
         <span class="badge badge-success float-right" data-toggle="tooltip" title="This user has not owned any characters from this world before.">FTO</span>
     @endif
@@ -82,7 +99,11 @@
                     <div class="row">
                         @foreach($items as $item)
                             <div class="col-md-3 col-6 profile-inventory-item">
-                                <img src="{{ $item->imageUrl }}" data-toggle="tooltip" title="{{ $item->name }}" />
+                                @if($item->imageUrl)
+                                    <img src="{{ $item->imageUrl }}" data-toggle="tooltip" title="{{ $item->name }}" />
+                                @else
+                                    <p>{{ $item->name }}</p>
+                                @endif
                             </div>
                         @endforeach
                     </div>
@@ -95,9 +116,16 @@
     </div>
 </div>
 
-<h2>Characters</h2>
+<h2>
+    <a href="{{ $user->url.'/characters' }}">Characters</a>
+    @if(isset($sublists) && $sublists->count() > 0)
+        @foreach($sublists as $sublist)
+        / <a href="{{ $user->url.'/sublist/'.$sublist->key }}">{{ $sublist->name }}</a>
+        @endforeach
+    @endif
+</h2>
 @foreach($user->characters()->visible()->take(4)->get()->chunk(4) as $chunk)
-<div class="row">
+<div class="row mb-4">
     @foreach($chunk as $character)
         <div class="col-md-3 col-6 text-center">
             <div>
@@ -111,4 +139,24 @@
 </div>
 @endforeach
 <div class="text-right"><a href="{{ $user->url.'/characters' }}">View all...</a></div>
+<hr>
+<br><br>
+
+@comments(['model' => $user->profile,
+        'perPage' => 5
+    ])
 @endsection
+
+    © 2021 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
