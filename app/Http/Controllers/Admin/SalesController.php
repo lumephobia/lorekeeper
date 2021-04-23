@@ -24,9 +24,9 @@ class SalesController extends Controller
             'saleses' => Sales::orderBy('post_at', 'DESC')->paginate(20)
         ]);
     }
-    
+
     /**
-     * Shows the create Sales page. 
+     * Shows the create Sales page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -36,7 +36,7 @@ class SalesController extends Controller
             'sales' => new Sales
         ]);
     }
-    
+
     /**
      * Shows the edit Sales page.
      *
@@ -64,7 +64,7 @@ class SalesController extends Controller
     {
         $id ? $request->validate(Sales::$updateRules) : $request->validate(Sales::$createRules);
         $data = $request->only([
-            'title', 'text', 'post_at', 'is_visible', 'bump', 'is_open', 'comments_open_at'
+            'title', 'text', 'post_at', 'is_visible', 'bump', 'is_open',  'is_closed', 'is_preview', 'species', 'design','trait','price', 'type', 'is_auction', 'is_sale', 'is_offer', 'is_xta', 'is_raffle', 'arturl', 'artlink', 'startbit', 'minbit', 'autobuy', 'time', 'comments_open_at'
         ]);
         if($id && $service->updateSales(Sales::find($id), $data, Auth::user())) {
             flash('Sales updated successfully.')->success();
@@ -78,7 +78,7 @@ class SalesController extends Controller
         }
         return redirect()->back();
     }
-    
+
     /**
      * Gets the Sales deletion modal.
      *

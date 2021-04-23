@@ -16,8 +16,10 @@ class Sales extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'text', 'parsed_text', 'title', 'is_visible', 'post_at', 
-        'is_open', 'comments_open_at'
+        'user_id', 'text', 'parsed_text', 'title', 'is_visible', 'post_at',
+        'is_open',  'is_closed', 'is_preview', 'species', 'design','trait','price',
+        'type', 'is_auction', 'is_sale', 'is_offer', 'is_xta', 'is_raffle', 'arturl',
+         'artlink', 'startbit', 'minbit', 'autobuy', 'time', 'comments_open_at'
     ];
 
     /**
@@ -50,7 +52,7 @@ class Sales extends Model
         'title' => 'required|between:3,25',
         'text' => 'required',
     ];
-    
+
     /**
      * Validation rules for updating.
      *
@@ -62,21 +64,21 @@ class Sales extends Model
     ];
 
     /**********************************************************************************************
-    
+
         RELATIONS
 
     **********************************************************************************************/
-    
+
     /**
      * Get the user who created the Sales post.
      */
-    public function user() 
+    public function user()
     {
         return $this->belongsTo('App\Models\User\User');
     }
 
     /**********************************************************************************************
-    
+
         SCOPES
 
     **********************************************************************************************/
@@ -104,7 +106,7 @@ class Sales extends Model
     }
 
     /**********************************************************************************************
-    
+
         ACCESSORS
 
     **********************************************************************************************/

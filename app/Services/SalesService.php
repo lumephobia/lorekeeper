@@ -31,17 +31,24 @@ class SalesService extends Service
         DB::beginTransaction();
 
         try {
-            $data['parsed_text'] = parse($data['text']);
-            $data['user_id'] = $user->id;
-            if(!isset($data['is_visible'])) $data['is_visible'] = 0;
-            if(!isset($data['is_open'])) $data['is_open'] = 0;
+          $data['parsed_text'] = parse($data['text']);
+          $data['user_id'] = $user->id;
+          if(!isset($data['is_visible'])) $data['is_visible'] = 0;
+          if(!isset($data['is_auction'])) $data['is_auction'] = 0;
+          if(!isset($data['is_sale'])) $data['is_sale'] = 0;
+          if(!isset($data['is_offer'])) $data['is_offer'] = 0;
+          if(!isset($data['is_xta'])) $data['is_xta'] = 0;
+          if(!isset($data['is_raffle'])) $data['is_raffle'] = 0;
+          if(!isset($data['is_open'])) $data['is_open'] = 0;
+          if(!isset($data['is_closed'])) $data['is_closed'] = 0;
+          if(!isset($data['is_preview'])) $data['is_preview'] = 0;
 
             $sales = Sales::create($data);
 
             if($sales->is_visible) $this->alertUsers();
 
             return $this->commitReturn($sales);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -51,7 +58,7 @@ class SalesService extends Service
      * Updates a Sales post.
      *
      * @param  \App\Models\Sales       $Sales
-     * @param  array                  $data 
+     * @param  array                  $data
      * @param  \App\Models\User\User  $user
      * @return bool|\App\Models\Sales
      */
@@ -60,17 +67,25 @@ class SalesService extends Service
         DB::beginTransaction();
 
         try {
-            $data['parsed_text'] = parse($data['text']);
-            $data['user_id'] = $user->id;
-            if(!isset($data['is_visible'])) $data['is_visible'] = 0;
-            if(!isset($data['is_open'])) $data['is_open'] = 0;
+          $data['parsed_text'] = parse($data['text']);
+          $data['user_id'] = $user->id;
+          if(!isset($data['is_visible'])) $data['is_visible'] = 0;
+          if(!isset($data['is_auction'])) $data['is_auction'] = 0;
+          if(!isset($data['is_sale'])) $data['is_sale'] = 0;
+          if(!isset($data['is_offer'])) $data['is_offer'] = 0;
+          if(!isset($data['is_xta'])) $data['is_xta'] = 0;
+          if(!isset($data['is_raffle'])) $data['is_raffle'] = 0;
+          if(!isset($data['is_open'])) $data['is_open'] = 0;
+          if(!isset($data['is_closed'])) $data['is_closed'] = 0;
+          if(!isset($data['is_preview'])) $data['is_preview'] = 0;
+          if(isset($data['bump']) && $data['is_visible'] == 1 && $data['bump'] == 1) $this->alertUsers();
 
             if(isset($data['bump']) && $data['is_visible'] == 1 && $data['bump'] == 1) $this->alertUsers();
 
             $sales->update($data);
 
             return $this->commitReturn($sales);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -90,7 +105,7 @@ class SalesService extends Service
             $sales->delete();
 
             return $this->commitReturn(true);
-        } catch(\Exception $e) { 
+        } catch(\Exception $e) {
             $this->setError('error', $e->getMessage());
         }
         return $this->rollbackReturn(false);
@@ -113,7 +128,7 @@ class SalesService extends Service
                 $this->alertUsers();
 
                 return $this->commitReturn(true);
-            } catch(\Exception $e) { 
+            } catch(\Exception $e) {
                 $this->setError('error', $e->getMessage());
             }
             return $this->rollbackReturn(false);
